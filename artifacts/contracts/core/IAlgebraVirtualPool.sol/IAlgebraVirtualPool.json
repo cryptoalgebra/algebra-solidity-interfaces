@@ -1,0 +1,48 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IAlgebraVirtualPool",
+  "sourceName": "contracts/core/IAlgebraVirtualPool.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "int24",
+          "name": "nextTick",
+          "type": "int24"
+        },
+        {
+          "internalType": "bool",
+          "name": "zeroToOne",
+          "type": "bool"
+        }
+      ],
+      "name": "cross",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "currentTimestamp",
+          "type": "uint32"
+        }
+      ],
+      "name": "increaseCumulative",
+      "outputs": [
+        {
+          "internalType": "enum IAlgebraVirtualPool.Status",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

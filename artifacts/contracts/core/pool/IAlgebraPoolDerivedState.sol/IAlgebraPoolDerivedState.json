@@ -1,0 +1,79 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IAlgebraPoolDerivedState",
+  "sourceName": "contracts/core/pool/IAlgebraPoolDerivedState.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "int24",
+          "name": "bottomTick",
+          "type": "int24"
+        },
+        {
+          "internalType": "int24",
+          "name": "topTick",
+          "type": "int24"
+        }
+      ],
+      "name": "getInnerCumulatives",
+      "outputs": [
+        {
+          "internalType": "int56",
+          "name": "innerTickCumulative",
+          "type": "int56"
+        },
+        {
+          "internalType": "uint160",
+          "name": "innerSecondsSpentPerLiquidity",
+          "type": "uint160"
+        },
+        {
+          "internalType": "uint32",
+          "name": "innerSecondsSpent",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "secondsAgos",
+          "type": "uint32[]"
+        }
+      ],
+      "name": "getTimepoints",
+      "outputs": [
+        {
+          "internalType": "int56[]",
+          "name": "tickCumulatives",
+          "type": "int56[]"
+        },
+        {
+          "internalType": "uint160[]",
+          "name": "secondsPerLiquidityCumulatives",
+          "type": "uint160[]"
+        },
+        {
+          "internalType": "uint112[]",
+          "name": "volatilityCumulatives",
+          "type": "uint112[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "volumePerAvgLiquiditys",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
