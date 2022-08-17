@@ -1,0 +1,253 @@
+{
+  "id": "1baddcc605ebc37623b884887a9ba1d2",
+  "_format": "hh-sol-build-info-1",
+  "solcVersion": "0.7.6",
+  "solcLongVersion": "0.7.6+commit.7338295f",
+  "input": {
+    "language": "Solidity",
+    "sources": {
+      "contracts/core/callback/IAlgebraMintCallback.sol": {
+        "content": "// SPDX-License-Identifier: GPL-2.0-or-later\r\npragma solidity >=0.5.0;\r\n\r\n/// @title Callback for IAlgebraPoolActions#mint\r\n/// @notice Any contract that calls IAlgebraPoolActions#mint must implement this interface\r\n/// @dev Credit to Uniswap Labs under GPL-2.0-or-later license:\r\n/// https://github.com/Uniswap/v3-core/tree/main/contracts/interfaces\r\ninterface IAlgebraMintCallback {\r\n  /// @notice Called to `msg.sender` after minting liquidity to a position from IAlgebraPool#mint.\r\n  /// @dev In the implementation you must pay the pool tokens owed for the minted liquidity.\r\n  /// The caller of this method must be checked to be a AlgebraPool deployed by the canonical AlgebraFactory.\r\n  /// @param amount0Owed The amount of token0 due to the pool for the minted liquidity\r\n  /// @param amount1Owed The amount of token1 due to the pool for the minted liquidity\r\n  /// @param data Any data passed through by the caller via the IAlgebraPoolActions#mint call\r\n  function algebraMintCallback(\r\n    uint256 amount0Owed,\r\n    uint256 amount1Owed,\r\n    bytes calldata data\r\n  ) external;\r\n}\r\n"
+      }
+    },
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 0
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers"
+          ],
+          "": [
+            "ast"
+          ]
+        }
+      }
+    }
+  },
+  "output": {
+    "contracts": {
+      "contracts/core/callback/IAlgebraMintCallback.sol": {
+        "IAlgebraMintCallback": {
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "amount0Owed",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount1Owed",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "data",
+                  "type": "bytes"
+                }
+              ],
+              "name": "algebraMintCallback",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            }
+          ],
+          "evm": {
+            "bytecode": {
+              "generatedSources": [],
+              "linkReferences": {},
+              "object": "",
+              "opcodes": "",
+              "sourceMap": ""
+            },
+            "deployedBytecode": {
+              "generatedSources": [],
+              "immutableReferences": {},
+              "linkReferences": {},
+              "object": "",
+              "opcodes": "",
+              "sourceMap": ""
+            },
+            "methodIdentifiers": {
+              "algebraMintCallback(uint256,uint256,bytes)": "3dd657c5"
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "contracts/core/callback/IAlgebraMintCallback.sol": {
+        "ast": {
+          "absolutePath": "contracts/core/callback/IAlgebraMintCallback.sol",
+          "exportedSymbols": {
+            "IAlgebraMintCallback": [
+              13
+            ]
+          },
+          "id": 14,
+          "license": "GPL-2.0-or-later",
+          "nodeType": "SourceUnit",
+          "nodes": [
+            {
+              "id": 1,
+              "literals": [
+                "solidity",
+                ">=",
+                "0.5",
+                ".0"
+              ],
+              "nodeType": "PragmaDirective",
+              "src": "46:24:0"
+            },
+            {
+              "abstract": false,
+              "baseContracts": [],
+              "contractDependencies": [],
+              "contractKind": "interface",
+              "documentation": {
+                "id": 2,
+                "nodeType": "StructuredDocumentation",
+                "src": "74:278:0",
+                "text": "@title Callback for IAlgebraPoolActions#mint\n @notice Any contract that calls IAlgebraPoolActions#mint must implement this interface\n @dev Credit to Uniswap Labs under GPL-2.0-or-later license:\n https://github.com/Uniswap/v3-core/tree/main/contracts/interfaces"
+              },
+              "fullyImplemented": false,
+              "id": 13,
+              "linearizedBaseContracts": [
+                13
+              ],
+              "name": "IAlgebraMintCallback",
+              "nodeType": "ContractDefinition",
+              "nodes": [
+                {
+                  "documentation": {
+                    "id": 3,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "388:572:0",
+                    "text": "@notice Called to `msg.sender` after minting liquidity to a position from IAlgebraPool#mint.\n @dev In the implementation you must pay the pool tokens owed for the minted liquidity.\n The caller of this method must be checked to be a AlgebraPool deployed by the canonical AlgebraFactory.\n @param amount0Owed The amount of token0 due to the pool for the minted liquidity\n @param amount1Owed The amount of token1 due to the pool for the minted liquidity\n @param data Any data passed through by the caller via the IAlgebraPoolActions#mint call"
+                  },
+                  "functionSelector": "3dd657c5",
+                  "id": 12,
+                  "implemented": false,
+                  "kind": "function",
+                  "modifiers": [],
+                  "name": "algebraMintCallback",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 10,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 5,
+                        "mutability": "mutable",
+                        "name": "amount0Owed",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 12,
+                        "src": "999:19:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 4,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "999:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 7,
+                        "mutability": "mutable",
+                        "name": "amount1Owed",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 12,
+                        "src": "1025:19:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 6,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1025:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 9,
+                        "mutability": "mutable",
+                        "name": "data",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 12,
+                        "src": "1051:19:0",
+                        "stateVariable": false,
+                        "storageLocation": "calldata",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_calldata_ptr",
+                          "typeString": "bytes"
+                        },
+                        "typeName": {
+                          "id": 8,
+                          "name": "bytes",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1051:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_storage_ptr",
+                            "typeString": "bytes"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "992:83:0"
+                  },
+                  "returnParameters": {
+                    "id": 11,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "1084:0:0"
+                  },
+                  "scope": 13,
+                  "src": "964:121:0",
+                  "stateMutability": "nonpayable",
+                  "virtual": false,
+                  "visibility": "external"
+                }
+              ],
+              "scope": 14,
+              "src": "352:736:0"
+            }
+          ],
+          "src": "46:1044:0"
+        },
+        "id": 0
+      }
+    }
+  }
+}

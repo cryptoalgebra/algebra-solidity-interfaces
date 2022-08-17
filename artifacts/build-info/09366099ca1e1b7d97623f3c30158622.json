@@ -1,0 +1,627 @@
+{
+  "id": "09366099ca1e1b7d97623f3c30158622",
+  "_format": "hh-sol-build-info-1",
+  "solcVersion": "0.7.6",
+  "solcLongVersion": "0.7.6+commit.7338295f",
+  "input": {
+    "language": "Solidity",
+    "sources": {
+      "contracts/core/IAlgebraPoolDeployer.sol": {
+        "content": "// SPDX-License-Identifier: GPL-2.0-or-later\r\npragma solidity >=0.5.0;\r\n\r\n/**\r\n * @title An interface for a contract that is capable of deploying Algebra Pools\r\n * @notice A contract that constructs a pool must implement this to pass arguments to the pool\r\n * @dev This is used to avoid having constructor arguments in the pool contract, which results in the init code hash\r\n * of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain.\r\n * Credit to Uniswap Labs under GPL-2.0-or-later license:\r\n * https://github.com/Uniswap/v3-core/tree/main/contracts/interfaces\r\n */\r\ninterface IAlgebraPoolDeployer {\r\n  /**\r\n   *  @notice Emitted when the factory address is changed\r\n   *  @param factory The factory address after the address was changed\r\n   */\r\n  event Factory(address indexed factory);\r\n\r\n  /**\r\n   * @notice Get the parameters to be used in constructing the pool, set transiently during pool creation.\r\n   * @dev Called by the pool constructor to fetch the parameters of the pool\r\n   * Returns dataStorage The pools associated dataStorage\r\n   * Returns factory The factory address\r\n   * Returns token0 The first token of the pool by address sort order\r\n   * Returns token1 The second token of the pool by address sort order\r\n   */\r\n  function parameters()\r\n    external\r\n    view\r\n    returns (\r\n      address dataStorage,\r\n      address factory,\r\n      address token0,\r\n      address token1\r\n    );\r\n\r\n  /**\r\n   * @dev Deploys a pool with the given parameters by transiently setting the parameters storage slot and then\r\n   * clearing it after deploying the pool.\r\n   * @param dataStorage The pools associated dataStorage\r\n   * @param factory The contract address of the Algebra factory\r\n   * @param token0 The first token of the pool by address sort order\r\n   * @param token1 The second token of the pool by address sort order\r\n   * @return pool The deployed pool's address\r\n   */\r\n  function deploy(\r\n    address dataStorage,\r\n    address factory,\r\n    address token0,\r\n    address token1\r\n  ) external returns (address pool);\r\n\r\n  /**\r\n   * @dev Sets the factory address to the poolDeployer for permissioned actions\r\n   * @param factory The address of the Algebra factory\r\n   */\r\n  function setFactory(address factory) external;\r\n}\r\n"
+      }
+    },
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 0
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers"
+          ],
+          "": [
+            "ast"
+          ]
+        }
+      }
+    }
+  },
+  "output": {
+    "contracts": {
+      "contracts/core/IAlgebraPoolDeployer.sol": {
+        "IAlgebraPoolDeployer": {
+          "abi": [
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "factory",
+                  "type": "address"
+                }
+              ],
+              "name": "Factory",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "dataStorage",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "factory",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token0",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token1",
+                  "type": "address"
+                }
+              ],
+              "name": "deploy",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "pool",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "parameters",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "dataStorage",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "factory",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token0",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token1",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "factory",
+                  "type": "address"
+                }
+              ],
+              "name": "setFactory",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            }
+          ],
+          "evm": {
+            "bytecode": {
+              "generatedSources": [],
+              "linkReferences": {},
+              "object": "",
+              "opcodes": "",
+              "sourceMap": ""
+            },
+            "deployedBytecode": {
+              "generatedSources": [],
+              "immutableReferences": {},
+              "linkReferences": {},
+              "object": "",
+              "opcodes": "",
+              "sourceMap": ""
+            },
+            "methodIdentifiers": {
+              "deploy(address,address,address,address)": "fd82b73a",
+              "parameters()": "89035730",
+              "setFactory(address)": "5bb47808"
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "contracts/core/IAlgebraPoolDeployer.sol": {
+        "ast": {
+          "absolutePath": "contracts/core/IAlgebraPoolDeployer.sol",
+          "exportedSymbols": {
+            "IAlgebraPoolDeployer": [
+              40
+            ]
+          },
+          "id": 41,
+          "license": "GPL-2.0-or-later",
+          "nodeType": "SourceUnit",
+          "nodes": [
+            {
+              "id": 1,
+              "literals": [
+                "solidity",
+                ">=",
+                "0.5",
+                ".0"
+              ],
+              "nodeType": "PragmaDirective",
+              "src": "46:24:0"
+            },
+            {
+              "abstract": false,
+              "baseContracts": [],
+              "contractDependencies": [],
+              "contractKind": "interface",
+              "documentation": {
+                "id": 2,
+                "nodeType": "StructuredDocumentation",
+                "src": "74:538:0",
+                "text": " @title An interface for a contract that is capable of deploying Algebra Pools\n @notice A contract that constructs a pool must implement this to pass arguments to the pool\n @dev This is used to avoid having constructor arguments in the pool contract, which results in the init code hash\n of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain.\n Credit to Uniswap Labs under GPL-2.0-or-later license:\n https://github.com/Uniswap/v3-core/tree/main/contracts/interfaces"
+              },
+              "fullyImplemented": false,
+              "id": 40,
+              "linearizedBaseContracts": [
+                40
+              ],
+              "name": "IAlgebraPoolDeployer",
+              "nodeType": "ContractDefinition",
+              "nodes": [
+                {
+                  "anonymous": false,
+                  "documentation": {
+                    "id": 3,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "650:141:0",
+                    "text": "  @notice Emitted when the factory address is changed\n  @param factory The factory address after the address was changed"
+                  },
+                  "id": 7,
+                  "name": "Factory",
+                  "nodeType": "EventDefinition",
+                  "parameters": {
+                    "id": 6,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 5,
+                        "indexed": true,
+                        "mutability": "mutable",
+                        "name": "factory",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 7,
+                        "src": "809:23:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 4,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "809:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "808:25:0"
+                  },
+                  "src": "795:39:0"
+                },
+                {
+                  "documentation": {
+                    "id": 8,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "840:440:0",
+                    "text": " @notice Get the parameters to be used in constructing the pool, set transiently during pool creation.\n @dev Called by the pool constructor to fetch the parameters of the pool\n Returns dataStorage The pools associated dataStorage\n Returns factory The factory address\n Returns token0 The first token of the pool by address sort order\n Returns token1 The second token of the pool by address sort order"
+                  },
+                  "functionSelector": "89035730",
+                  "id": 19,
+                  "implemented": false,
+                  "kind": "function",
+                  "modifiers": [],
+                  "name": "parameters",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 9,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "1303:2:0"
+                  },
+                  "returnParameters": {
+                    "id": 18,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 11,
+                        "mutability": "mutable",
+                        "name": "dataStorage",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 19,
+                        "src": "1352:19:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 10,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1352:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 13,
+                        "mutability": "mutable",
+                        "name": "factory",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 19,
+                        "src": "1380:15:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 12,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1380:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 15,
+                        "mutability": "mutable",
+                        "name": "token0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 19,
+                        "src": "1404:14:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 14,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1404:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 17,
+                        "mutability": "mutable",
+                        "name": "token1",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 19,
+                        "src": "1427:14:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 16,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1427:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "1343:105:0"
+                  },
+                  "scope": 40,
+                  "src": "1284:165:0",
+                  "stateMutability": "view",
+                  "virtual": false,
+                  "visibility": "external"
+                },
+                {
+                  "documentation": {
+                    "id": 20,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "1455:477:0",
+                    "text": " @dev Deploys a pool with the given parameters by transiently setting the parameters storage slot and then\n clearing it after deploying the pool.\n @param dataStorage The pools associated dataStorage\n @param factory The contract address of the Algebra factory\n @param token0 The first token of the pool by address sort order\n @param token1 The second token of the pool by address sort order\n @return pool The deployed pool's address"
+                  },
+                  "functionSelector": "fd82b73a",
+                  "id": 33,
+                  "implemented": false,
+                  "kind": "function",
+                  "modifiers": [],
+                  "name": "deploy",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 29,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 22,
+                        "mutability": "mutable",
+                        "name": "dataStorage",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 33,
+                        "src": "1958:19:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 21,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1958:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 24,
+                        "mutability": "mutable",
+                        "name": "factory",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 33,
+                        "src": "1984:15:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 23,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1984:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 26,
+                        "mutability": "mutable",
+                        "name": "token0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 33,
+                        "src": "2006:14:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 25,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2006:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      },
+                      {
+                        "constant": false,
+                        "id": 28,
+                        "mutability": "mutable",
+                        "name": "token1",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 33,
+                        "src": "2027:14:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 27,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2027:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "1951:95:0"
+                  },
+                  "returnParameters": {
+                    "id": 32,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 31,
+                        "mutability": "mutable",
+                        "name": "pool",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 33,
+                        "src": "2065:12:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 30,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2065:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "2064:14:0"
+                  },
+                  "scope": 40,
+                  "src": "1936:143:0",
+                  "stateMutability": "nonpayable",
+                  "virtual": false,
+                  "visibility": "external"
+                },
+                {
+                  "documentation": {
+                    "id": 34,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "2085:147:0",
+                    "text": " @dev Sets the factory address to the poolDeployer for permissioned actions\n @param factory The address of the Algebra factory"
+                  },
+                  "functionSelector": "5bb47808",
+                  "id": 39,
+                  "implemented": false,
+                  "kind": "function",
+                  "modifiers": [],
+                  "name": "setFactory",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 37,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 36,
+                        "mutability": "mutable",
+                        "name": "factory",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 39,
+                        "src": "2256:15:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "typeName": {
+                          "id": 35,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2256:7:0",
+                          "stateMutability": "nonpayable",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "2255:17:0"
+                  },
+                  "returnParameters": {
+                    "id": 38,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "2281:0:0"
+                  },
+                  "scope": 40,
+                  "src": "2236:46:0",
+                  "stateMutability": "nonpayable",
+                  "virtual": false,
+                  "visibility": "external"
+                }
+              ],
+              "scope": 41,
+              "src": "614:1671:0"
+            }
+          ],
+          "src": "46:2241:0"
+        },
+        "id": 0
+      }
+    }
+  }
+}

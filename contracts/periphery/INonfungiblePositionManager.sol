@@ -13,6 +13,8 @@ import './IPeripheryImmutableState.sol';
 /// @title Non-fungible token for positions
 /// @notice Wraps Algebra positions in a non-fungible token interface which allows for them to be transferred
 /// and authorized.
+/// @dev Credit to Uniswap Labs under GPL-2.0-or-later license:
+/// https://github.com/Uniswap/v3-periphery
 interface INonfungiblePositionManager is
     IPoolInitializer,
     IPeripheryPayments,
@@ -130,8 +132,8 @@ interface INonfungiblePositionManager is
     /// amount1Min The minimum amount of token1 to spend, which serves as a slippage check,
     /// deadline The time by which the transaction must be included to effect the change
     /// @return liquidity The new liquidity amount as a result of the increase
-    /// @return amount0 The amount of token0 to acheive resulting liquidity
-    /// @return amount1 The amount of token1 to acheive resulting liquidity
+    /// @return amount0 The amount of token0 to achieve resulting liquidity
+    /// @return amount1 The amount of token1 to achieve resulting liquidity
     function increaseLiquidity(IncreaseLiquidityParams calldata params)
         external
         payable
